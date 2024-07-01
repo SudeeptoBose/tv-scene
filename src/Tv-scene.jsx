@@ -9,6 +9,8 @@ import { useGLTF } from '@react-three/drei'
 
 export function TVScene(props) {
   const { nodes, materials } = useGLTF('/tv-scene-transformed.glb')
+
+
   return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.tv.geometry} material={materials.Default} scale={0.005} />
