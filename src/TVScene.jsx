@@ -5,16 +5,23 @@ Files: ./public/tv-scene.glb [1.79MB] > C:\Users\Sudeepto\Desktop\tv-scene\tv-sc
 */
 
 import React, { useRef } from 'react'
-import { useGLTF } from '@react-three/drei'
+import { useGLTF, useVideoTexture } from '@react-three/drei'
+import * as THREE from 'three'
 
 export function TVScene(props) {
   const { nodes, materials } = useGLTF('/tv-scene-transformed.glb')
 
+  const videoTexture = useVideoTexture('/vid.mp4')
+  videoTexture.flipY = false
+
+  const newMaterial = new THREE.MeshBasicMaterial({
+		map:videoTexture
+	})
 
   return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.tv.geometry} material={materials.Default} scale={0.005} />
-      <mesh geometry={nodes.screen.geometry} material={materials.Light} scale={0.005} />
+      <mesh geometry={nodes.screen.geometry} material={newMaterial} scale={0.005} />
     </group>
   )
 }

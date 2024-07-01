@@ -1,10 +1,12 @@
 import React from 'react'
-import { TVScene } from './Tv-scene'
+import { TVScene } from './TVScene'
+import { TVSceneTwo } from './TVSceneTwo'
 
 const Experience = () => {
   return (
     <>
-        <TVScene/>
+        {/* <TVScene/> */}
+        <TVSceneTwo/>
     </>
   )
 }
